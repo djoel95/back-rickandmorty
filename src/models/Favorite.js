@@ -1,6 +1,6 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from "sequelize";
 
-module.exports = (sequelize) => {
+const Favorite = (sequelize) => {
    sequelize.define('Favorite', {
       id: {
          type: DataTypes.INTEGER,
@@ -32,6 +32,8 @@ module.exports = (sequelize) => {
          type: DataTypes.STRING,
          allowNull: false,
       },
-   } 
+   }
    );
 };
+
+export default Favorite
