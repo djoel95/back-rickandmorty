@@ -1,14 +1,11 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+import { User, Character, Auth, Favorites } from '../controllers/index.js';
+import { server } from '../bootstrap/index.js'
 
+const router = Router();
+router.get('/character/:id', Character.getCharById);
+router.get('/login', Auth.login);
+router.post('/fav', Favorites.postFav);
+router.delete('/fav/:id', Favorites.deleteFav);
 
-const getCharById = require('../controllers/getCharById');
-const login = require('../controllers/login');
-const { postFav, deleteFav } = require('../controllers/handleFavorites');
-
-router.get('/character/:id', getCharById);
-router.get('/login', login);
-router.post('/fav', postFav);
-router.delete('/fav/:id', deleteFav);
-
-module.exports = router;
+server.use('/api', router);
