@@ -1,4 +1,4 @@
-const myFavorites = [];
+let myFavorites = [];
 
 export const postFav = (req, res) => {
     const character = req.body;
